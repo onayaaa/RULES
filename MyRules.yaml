@@ -1,4 +1,4 @@
-preload:
+payload:
   # 直连
   - DOMAIN-SUFFIX,423down.com
   - DOMAIN-KEYWORD,adobe
