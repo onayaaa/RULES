@@ -1,3 +1,4 @@
 payload:
   #代理
   - DOMAIN-SUFFIX,mirror.ghproxy.com
+  - DOMAIN-SUFFIX,defehaita.xyz
