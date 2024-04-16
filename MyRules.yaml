@@ -32,3 +32,4 @@ payload:
   - DOMAIN-SUFFIX,windows.net
   - DOMAIN-SUFFIX,windowsupdate.com
   - DOMAIN-SUFFIX,zotero.org
+  - DOMAIN-KEYWORD,xbox
