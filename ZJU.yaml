@@ -1,0 +1,41 @@
+payload:
+  # ZJU 内网
+  # 校内直连，校外通过内网穿透或 RVPN 访问
+
+  # 域名
+  - DOMAIN-SUFFIX,zju.edu.cn
+
+  # CC98
+  - DOMAIN-KEYWORD,cc98
+
+  # NexusHD
+  - DOMAIN-KEYWORD,nexushd
+
+  # ICSR WIKI
+  - DOMAIN-SUFFIX,icsr.wiki
+
+  # ZJU School-Bus
+  - DOMAIN-SUFFIX,zjusec.com
+  - DOMAIN-SUFFIX,zjusec.net
+  - DOMAIN-SUFFIX,zjusec.top
+
+  # ZJU SCT
+  - DOMAIN-SUFFIX,zjusct.io
+
+  # ZJU EVA
+  - DOMAIN-SUFFIX,zjueva.net
+
+  # ZJU QSC
+  - DOMAIN-SUFFIX,zjuqsc.com
+
+  # 查老师
+  - DOMAIN-KEYWORD,chalaoshi
+
+  # RVPN
+  - DOMAIN-SUFFIX,rvpn.zju.edu.cn
+  - DOMAIN-SUFFIX,webvpn.zju.edu.cn
+
+  - IP-CIDR,210.32.174.2/32,no-resolve
+  - IP-CIDR,61.175.193.50/32,no-resolve
+  - IP-CIDR,124.160.105.200/32,no-resolve
+  - IP-CIDR,218.108.88.254/32,no-resolve

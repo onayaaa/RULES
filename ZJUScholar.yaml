@@ -1,5 +1,5 @@
-payload:
-  # ZJU+Scholar
+ payload:
+   #ZJUScholar
   - DOMAIN-SUFFIX,acm.org
   - DOMAIN-SUFFIX,acs.org
   - DOMAIN-SUFFIX,aiaa.org
@@ -28,13 +28,11 @@ payload:
   - DOMAIN-SUFFIX,cambridge.org
   - DOMAIN-SUFFIX,canvas-user-content.com
   - DOMAIN-SUFFIX,cas.org
-  - DOMAIN-KEYWORD,cc98
   - DOMAIN-SUFFIX,cdn.plu.mx
   - DOMAIN-SUFFIX,cdnsciencepub.com
   - DOMAIN-SUFFIX,cell.com
-  - DOMAIN-KEYWORD,chalaoshi
   - DOMAIN-SUFFIX,clarivate.com
-  - DOMAIN-SUFFIX,cnki.net	
+  - DOMAIN-SUFFIX,cnki.net  
   - DOMAIN-SUFFIX,cnpereading.com
   - DOMAIN-SUFFIX,cqvip.com
   - DOMAIN-SUFFIX,crossref.org
@@ -65,7 +63,6 @@ payload:
   - DOMAIN-SUFFIX,highwire.org
   - DOMAIN-SUFFIX,icevirtuallibrary.com
   - DOMAIN-SUFFIX,iclicker.com
-  - DOMAIN-SUFFIX,icsr.wiki
   - DOMAIN-SUFFIX,ieee.org
   - DOMAIN-KEYWORD,illinois
   - DOMAIN-SUFFIX,imf.org
@@ -94,7 +91,6 @@ payload:
   - DOMAIN-SUFFIX,nature.com
   - DOMAIN-SUFFIX,ncbi.nlm.nih.gov
   - DOMAIN-SUFFIX,nejm.org
-  - DOMAIN-KEYWORD,nexushd
   - DOMAIN-SUFFIX,niscpr.res.in
   - DOMAIN-SUFFIX,nist.gov
   - DOMAIN-SUFFIX,nrcresearchpress.cn
@@ -154,11 +150,12 @@ payload:
   - DOMAIN-SUFFIX,wiley.com
   - DOMAIN-SUFFIX,worldbank.org
   - DOMAIN-SUFFIX,worldscientific.com
-  - DOMAIN-SUFFIX,zju.edu.cn
-  - DOMAIN-SUFFIX,zjueva.net
-  - DOMAIN-SUFFIX,zjuqsc.com
-  - DOMAIN-SUFFIX,zjusct.io
-  - DOMAIN-SUFFIX,zjusec.com
-  - DOMAIN-SUFFIX,zjusec.net
-  - DOMAIN-SUFFIX,zjusec.top
-  - DOMAIN-SUFFIX,zotero.org
+  - DOMAIN-SUFFIX,cnki.net
+  - DOMAIN-KEYWORD,shibboleth
+  - DOMAIN-KEYWORD,sso
+  - DOMAIN-KEYWORD,uiuc
+  - DOMAIN-SUFFIX,duosecurity.com
+  - DOMAIN-SUFFIX,insops.net
+  - DOMAIN-SUFFIX,gradescope.com
+  - DOMAIN-SUFFIX,us.prairielearn.com
+  - DOMAIN-SUFFIX,zoom.us
