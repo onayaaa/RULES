@@ -1,0 +1,6 @@
+payload:
+    # 下载
+    - PROCESS-NAME,aria2c.exe,FREE
+    - PROCESS-NAME,ffmpeg.exe,FREE
+    - PROCESS-NAME,ytarchive.exe,FREE
+  
