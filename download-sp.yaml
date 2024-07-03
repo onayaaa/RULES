@@ -1,6 +1,6 @@
 payload:
-    # twitch abema
-    - DOMAIN-SUFFIX,ttvnw.net,Direct
-    - DOMAIN-SUFFIX,cloudfront.net,Direct
-    - DOMAIN-KEYWORD,abema,JP
+  # twitch abema
+  - DOMAIN-SUFFIX,ttvnw.net
+  - DOMAIN-SUFFIX,cloudfront.net
+  - DOMAIN-KEYWORD,abema
     
