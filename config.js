@@ -179,11 +179,19 @@ const rules = [
   "MATCH,Global"
 ];
 
+// 正则筛选节点
+function getProxiesByRegex(config, regex) {
+  return config.proxies
+    .filter((e) => regex.test(e.name))
+    .map((e) => e.name);
+}
+
 // 创建代理组
-function createProxyGroup(name, type, additionalOptions = {}) { 
+function createProxyGroup(name, type, proxies, additionalOptions = {}) { 
   return {
     name,
     type,
+    proxies: proxies.length > 0 ? proxies : ["DIRECT"],
     "interval": 300,
     "timeout": 3000,
     "url": "https://www.google.com/generate_204",
@@ -198,7 +206,6 @@ function createProxyGroup(name, type, additionalOptions = {}) {
 function main(config) {
   const proxyCount = config?.proxies?.length ?? 0;
   const proxyProviderCount = typeof config?.["proxy-providers"] === "object" ? Object.keys(config["proxy-providers"]).length : 0;
-
   if (proxyCount === 0 && proxyProviderCount === 0) {
     throw new Error("配置文件中未找到任何代理");
   }
@@ -206,30 +213,35 @@ function main(config) {
   config.dns = dnsConfig;
   config["proxy-providers"] = proxyProviders;
 
-  // 区域配置
-  const regions = [
-    { name: "JP", regex: /(日本|JP|Japan|🇯🇵)(?!.*[^\.][2-9](\.[0-9])?x)/ }, 
-    { name: "HK", regex: /(香港|HK|Hong|🇭🇰)(?!.*[^\.][2-9](\.[0-9])?x)/ }, 
-    { name: "US", regex: /(美国|US|United States|America|🇺🇸)(?!.*[^\.][2-9](\.[0-9])?x)/ }, 
-    { name: "SG", regex: /(新加坡|狮城|SG|Singapore|🇸🇬)(?!.*[^\.][2-9](\.[0-9])?x)/ }, 
-    { name: "TW", regex: /(台湾|TW|Taiwan|Wan|🇨🇳|🇹🇼)(?!.*[^\.][2-9](\.[0-9])?x)/ }, 
-    { name: "Others", regex: /^(?!.*(?:香港|HK|Hong|🇭🇰|台湾|TW|Taiwan|Wan|🇨🇳|🇹🇼|新加坡|SG|Singapore|狮城|🇸🇬|日本|JP|Japan|🇯🇵|美国|US|States|America|🇺🇸|[^\.][2-9](\.[0-9])?x)).*$/ }, 
-    { name: "All", regex: /^(?!.*(?:自动|故障|流量|官网|套餐|机场|订阅|年|月|失联|频道|重置|[^\.][2-9](\.[0-9])?x)).*$/ }, 
+  // 提取区域正则表达式和对应名称
+  const regions = [ 
+    { name: "JP", regex: /(日本|JP|Japan|🇯🇵)(?!.*[^\.][2-9](\.[0-9])?x)/ },
+    { name: "HK", regex: /(香港|HK|Hong|🇭🇰)(?!.*[^\.][2-9](\.[0-9])?x)/ },
+    { name: "US", regex: /(美国|US|United States|America|🇺🇸)(?!.*[^\.][2-9](\.[0-9])?x)/ },
+    { name: "SG", regex: /(新加坡|狮城|SG|Singapore|🇸🇬)(?!.*[^\.][2-9](\.[0-9])?x)/ },
+    { name: "TW", regex: /(台湾|TW|Taiwan|Wan|🇨🇳|🇹🇼)(?!.*[^\.][2-9](\.[0-9])?x)/ },
+    { name: "Others", regex: /^(?!.*(?:香港|HK|Hong|🇭🇰|台湾|TW|Taiwan|Wan|🇨🇳|🇹🇼|新加坡|SG|Singapore|狮城|🇸🇬|日本|JP|Japan|🇯🇵|美国|US|States|America|🇺🇸|[^\.][2-9](\.[0-9])?x)).*$/ },
+    { name: "All", regex: /^(?!.*(?:自动|故障|流量|官网|套餐|机场|订阅|年|月|失联|频道|重置|[^\.][2-9](\.[0-9])?x)).*$/ }
   ];
 
+  // 动态生成代理组
+  const proxyGroups = regions.map(region => createProxyGroup(region.name, "url-test", getProxiesByRegex(config, region.regex)));
+
   config["proxy-groups"] = [
-    createProxyGroup("Proxy", "select", { proxies: ["Select", "Auto", "Fallback", "Balance(consistent-hashing)", "Balance(round-robin)", "JP", "HK", "US", "SG", "TW", "Others"] }),
-    createProxyGroup("Select", "select", { "include-all-proxies": true, "exclude-filter": "(自动|故障|流量|官网|套餐|机场|订阅|年|月|失联|频道|重置)" }),
-    ...regions.map(region => createProxyGroup(region.name, "url-test", { "include-all-proxies": true, filter: region.regex.source })), 
-    createProxyGroup("Auto", "url-test", { "include-all-proxies": true, "exclude-filter": "(自动|故障|流量|官网|套餐|机场|订阅|年|月|失联|频道|重置)", tolerance: 100 }),
-    createProxyGroup("Fallback", "fallback", { "include-all-proxies": true, "exclude-filter": "(自动|故障|流量|官网|套餐|机场|订阅|年|月|失联|频道|重置)" }),
-    createProxyGroup("Balance(consistent-hashing)", "load-balance", { "include-all-proxies": true, "exclude-filter": "(自动|故障|流量|官网|套餐|机场|订阅|年|月|失联|频道|重置)", strategy: "consistent-hashing" }),
-    createProxyGroup("Balance(round-robin)", "load-balance", { "include-all-proxies": true, "exclude-filter": "(自动|故障|流量|官网|套餐|机场|订阅|年|月|失联|频道|重置)", strategy: "round-robin" }),
-    createProxyGroup("Adblock", "select", { proxies: ["REJECT", "DIRECT", "Proxy"] }),
-    createProxyGroup("Direct", "select", { proxies: ["DIRECT", "Proxy"] }),
-    createProxyGroup("Reject", "select", { proxies: ["REJECT", "DIRECT", "Proxy"] }),
-    createProxyGroup("Global", "select", { proxies: ["Proxy", "DIRECT"] }),
-    createProxyGroup("FREE", "url-test", { "include-all-providers": true, hidden: true }),
+    createProxyGroup("Proxy", "select", ["Select", "Auto", "Fallback", "Balance(consistent-hashing)", "Balance(round-robin)",  "JP", "HK","US", "SG", "TW", "Others"]),
+    createProxyGroup("Select", "select", getProxiesByRegex(config, regions.find(region => region.name === "All").regex)),
+    ...proxyGroups, 
+    createProxyGroup("Auto", "url-test", getProxiesByRegex(config, regions.find(region => region.name === "All").regex), { tolerance: 100 }),
+    createProxyGroup("Fallback", "fallback", getProxiesByRegex(config, regions.find(region => region.name === "All").regex)),
+    createProxyGroup("Balance(consistent-hashing)", "load-balance", getProxiesByRegex(config, regions.find(region => region.name === "All").regex) , { strategy: "consistent-hashing"}),
+    createProxyGroup("Balance(round-robin)", "load-balance", getProxiesByRegex(config, regions.find(region => region.name === "All").regex), { strategy: "round-robin"}),
+    createProxyGroup("Adblock", "select", ["REJECT","DIRECT", "Proxy"]),
+    createProxyGroup("Direct", "select", ["DIRECT", "Proxy"]),
+    createProxyGroup("Reject", "select", ["REJECT", "DIRECT", "Proxy"]),
+    createProxyGroup("Global", "select", ["Proxy", "DIRECT"]),
+    createProxyGroup("FREE", "url-test", [], { "include-all-providers": true , "exclude-filter": "DIRECT", "hidden": true}),
+    // createProxyGroup("WARP", "url-test", [], { "use":  ["CF-WARP"], "exclude-filter": "DIRECT" }),
+    // createProxyGroup("FREE", "url-test", [], { "use":  ["juzi"], "exclude-filter": "DIRECT" })
   ];
 
   config["rule-providers"] = ruleProviders;
@@ -238,3 +250,4 @@ function main(config) {
   // 返回修改后的配置
   return config;
 }
+
