@@ -3,5 +3,4 @@ payload:
   - PROCESS-NAME,aria2c.exe
   - PROCESS-NAME,ffmpeg.exe
   - PROCESS-NAME,ytarchive.exe
-  - PROCESS-NAME,biliup_v0.4.75.exe
   
