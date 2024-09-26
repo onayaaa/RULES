@@ -3,4 +3,4 @@ payload:
   - PROCESS-NAME,aria2c.exe
   - PROCESS-NAME,ffmpeg.exe
   - PROCESS-NAME,ytarchive.exe
-  
+  - PROCESS-NAME,node.exe
