@@ -37,7 +37,4 @@ payload:
   - DOMAIN-SUFFIX,gigafile.nu
   - DOMAIN-SUFFIX,vod-sbhawks.streaks.jp
   - DOMAIN-SUFFIX,live-sbhawks.streaks.jp
-  - DOMAIN-SUFFIX,tx-live-cdn.tver.jp
-  - DOMAIN-SUFFIX,tx-vod-cdn.tver.jp
-  - DOMAIN-SUFFIX,cx-vod-cdn.tver.jp
-  - DOMAIN-SUFFIX,tbs-vod-cdn.tver.jp
+  - DOMAIN-SUFFIX,tver.jp
