@@ -40,3 +40,4 @@ payload:
   - DOMAIN-SUFFIX,tx-live-cdn.tver.jp
   - DOMAIN-SUFFIX,tx-vod-cdn.tver.jp
   - DOMAIN-SUFFIX,cx-vod-cdn.tver.jp
+  - DOMAIN-SUFFIX,tbs-vod-cdn.tver.jp
