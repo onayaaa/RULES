@@ -2,4 +2,4 @@ payload:
     # 直连
     - DOMAIN-SUFFIX,googlevideo.com
     - DOMAIN-SUFFIX,gofile.io
-  
+    - DOMAIN-SUFFIX,linear-abematv.akamaized.net
