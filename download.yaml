@@ -1,6 +1,6 @@
 payload:
   # 下载
-#  - PROCESS-NAME,aria2c.exe
+  # - PROCESS-NAME,aria2c.exe
   # - PROCESS-NAME,ffmpeg.exe
   # - PROCESS-NAME,ytarchive.exe
   - PROCESS-NAME,N_m3u8DL-RE.exe
