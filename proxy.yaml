@@ -3,4 +3,3 @@ payload:
   - DOMAIN-SUFFIX,mirror.ghproxy.com
   - DOMAIN-KEYWORD,copilot
   - DOMAIN-SUFFIX,cquotient.com #nijistore ranking
-  - DOMAIN-SUFFIX,imasdk.googleapis.com #TVer region restrict
