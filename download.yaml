@@ -4,5 +4,3 @@ payload:
   # - PROCESS-NAME,ffmpeg.exe
   - PROCESS-NAME,ytarchive.exe
   - PROCESS-NAME,N_m3u8DL-RE.exe
-  - PROCESS-NAME,node.exe
-  - PROCESS-NAME,livedl.exe
