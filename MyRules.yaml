@@ -15,7 +15,7 @@ payload:
   - DOMAIN-SUFFIX,enza.fun
   - DOMAIN-SUFFIX,jianshu.com
   - DOMAIN-SUFFIX,lanzous.com
-  # - DOMAIN-SUFFIX,lightnovel.us
+  - DOMAIN-SUFFIX,lightnovel.us
   - DOMAIN-KEYWORD,logitechg
   - DOMAIN-SUFFIX,mobinovels.com
   - DOMAIN-SUFFIX,office.net
