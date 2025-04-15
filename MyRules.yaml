@@ -3,7 +3,7 @@ payload:
   - DOMAIN-SUFFIX,423down.com
   - DOMAIN-KEYWORD,adobe
   - DOMAIN-SUFFIX,azureedge.net
-  # - DOMAIN-SUFFIX,bgm.tv
+  - DOMAIN-SUFFIX,bgm.tv
   - DOMAIN-SUFFIX,bing.com
   - DOMAIN-SUFFIX,bing.net
   - DOMAIN-SUFFIX,bingapis.com
@@ -44,3 +44,4 @@ payload:
   - DOMAIN-SUFFIX,nijigaku.club
   - DOMAIN-SUFFIX,lovelive.cx
   - DOMAIN-SUFFIX,sambanova.ai
+  - DOMAIN-SUFFIX,steamserver.net
