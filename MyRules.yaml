@@ -43,4 +43,4 @@ payload:
   - DOMAIN-SUFFIX,nijigaku.club
   - DOMAIN-SUFFIX,lovelive.cx
   - DOMAIN-SUFFIX,sambanova.ai
-  - DOMAIN-SUFFIX,store9.gofile.io
+  - DOMAIN-REGEX,^(?!abc\.com$)[a-zA-Z0-9.-]+\.abc\.com$
