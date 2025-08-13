@@ -3,3 +3,4 @@ payload:
     - DOMAIN-SUFFIX,googlevideo.com
     - DOMAIN-SUFFIX,linear-abematv.akamaized.net
     - DOMAIN-SUFFIX,dmc.nico
+    - DOMAIN-SUFFIX,hls.live-video.net
